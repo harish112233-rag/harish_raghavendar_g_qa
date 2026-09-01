@@ -1,3 +1,21 @@
+// preloader
+(function(){
+  const pre = document.getElementById('preloader');
+  if(!pre) return;
+  const minTime = 1200;
+  const start = Date.now();
+  function hide(){
+    const elapsed = Date.now() - start;
+    const wait = Math.max(0, minTime - elapsed);
+    setTimeout(()=>{
+      pre.classList.add('hide');
+      setTimeout(()=> pre.remove(), 700);
+    }, wait);
+  }
+  if(document.readyState === 'complete'){ hide(); }
+  else{ window.addEventListener('load', hide); }
+})();
+
 // rotating terminal captions
   const lines = [
     "reproducing_bug on terrain zone 04",
